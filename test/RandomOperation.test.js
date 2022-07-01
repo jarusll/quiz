@@ -7,4 +7,13 @@ describe("RandomOperation", function(){
 	console.log(randomOp)
 	expect(randomOp).to.be.instanceOf(RandomOperation)
     })
+
+    it("#value", function(){
+	const randomOp = new RandomOperation(1, 10)
+	const {left, right, operator} = randomOp
+	const value = eval(`${left} ${operator} ${right}`)
+	console.log(randomOp)
+	console.log("value", value)
+	expect(randomOp.value()).to.be.equal(value)
+    })
 })
