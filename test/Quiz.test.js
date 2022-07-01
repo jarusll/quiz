@@ -55,5 +55,15 @@ describe("Quiz", function(){
 	    const next = quiz.next(12, 5, "/") 
 	    expect(quiz.check(2.4)).to.be.true
 	})
+
+	it("stores the results in submissions", function(){
+	    const quiz = new Quiz(2, 4, 20)
+	    const next1 = quiz.next(4, 5, "*") 
+	    quiz.check(20)
+	    expect(quiz.submissions).to.deep.equal([[next1, 20]])
+	    const next2 = quiz.next(4, 5, "*") 
+	    quiz.check(2)
+	    expect(quiz.submissions).to.deep.equal([[next1, 20], [next2, 2]])
+	})
     })
 })

@@ -8,6 +8,7 @@ class Quiz {
 	this.minAllowed = minAllowed
 	this.maxAllowed = maxAllowed
 	this.current = null
+	this.submissions = []
     }
 
     next(){
@@ -24,6 +25,7 @@ class Quiz {
     check(value){
 	const opValue = Number(this.current.value()).toFixed(1)
 	const givenValue = Number(value).toFixed(1)
+	this.submissions.push([this.current, value])
 	return opValue === givenValue
     }
 }
