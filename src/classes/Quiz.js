@@ -1,6 +1,6 @@
-const Math = require("./Math.js")
-const RandomOperation = require("./RandomOperation.js")
-const Operation = require("./Operation.js")
+import Math from "./Math.js"
+import RandomOperation from "./RandomOperation.js"
+import Operation from "./Operation.js"
 
 class Quiz {
     constructor(count, minAllowed, maxAllowed){
@@ -30,4 +30,4 @@ class Quiz {
     }
 }
 
-module.exports = Quiz
+export default Quiz

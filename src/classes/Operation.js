@@ -17,4 +17,4 @@ class Operation {
     }
 }
 
-module.exports = Operation
+export default Operation

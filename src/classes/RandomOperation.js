@@ -1,6 +1,6 @@
-const Operation = require("./Operation.js")
-const Math = require("./Math.js")
-const Array = require("./Array.js")
+import Operation from "./Operation.js"
+import Math from "./Math.js"
+import Array from "./Array.js"
 
 class RandomOperation extends Operation {
     operators = ["+", "-", "*", "/"]
@@ -20,4 +20,4 @@ class RandomOperation extends Operation {
     }
 }
 
-module.exports = RandomOperation
+export default RandomOperation

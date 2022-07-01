@@ -1,5 +1,5 @@
-const Operation = require("../src/classes/Operation.js")
-const expect = require("chai").expect
+import Operation from "../src/classes/Operation.js"
+import { expect } from "chai"
 
 describe("Operation", function(){
     describe("constructor", function(){

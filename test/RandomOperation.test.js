@@ -1,5 +1,5 @@
-const RandomOperation = require("../src/classes/RandomOperation.js")
-const expect = require("chai").expect
+import RandomOperation from "../src/classes/RandomOperation.js"
+import { expect } from "chai"
 
 describe("RandomOperation", function(){
     describe("#constructor", function(){

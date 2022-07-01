@@ -1,8 +1,8 @@
 
-const Quiz = require('../src/classes/Quiz.js')
-const RandomOperation = require('../src/classes/RandomOperation.js')
-const Operation = require('../src/classes/Operation.js')
-const expect = require("chai").expect
+import Quiz from '../src/classes/Quiz.js'
+import RandomOperation from '../src/classes/RandomOperation.js'
+import Operation from '../src/classes/Operation.js'
+import { expect } from "chai"
 
 describe("Quiz", function(){
     describe("#constructor", function(){
