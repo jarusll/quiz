@@ -48,4 +48,12 @@ describe("Quiz", function(){
 	    expect(quiz.current).to.equal(next)
 	})
     })
+
+    describe("#check", function(){
+	it("checks given value against operation value", function(){
+	    const quiz = new Quiz(2, 4, 20)
+	    const next = quiz.next(12, 5, "/") 
+	    expect(quiz.check(2.4)).to.be.true
+	})
+    })
 })

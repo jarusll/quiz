@@ -20,6 +20,12 @@ class Quiz {
 	    this.current = new RandomOperation(this.minAllowed, this.maxAllowed)
 	return this.current
     }
+
+    check(value){
+	const opValue = Number(this.current.value()).toFixed(1)
+	const givenValue = Number(value).toFixed(1)
+	return opValue === givenValue
+    }
 }
 
 module.exports = Quiz
