@@ -12,3 +12,5 @@ class Quiz {
 	const right = Math.randomRange(this.min, this.max)
     }
 }
+
+module.exports = Quiz
