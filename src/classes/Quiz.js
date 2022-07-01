@@ -6,13 +6,15 @@ class Quiz {
 	this.total = count
 	this.minAllowed = minAllowed
 	this.maxAllowed = maxAllowed
+	this.current = null
     }
 
     next(){
 	if (this.total <= 0)
 	    return false
 	this.total--
-	return new RandomOperation(this.minAllowed, this.maxAllowed)
+	this.current = new RandomOperation(this.minAllowed, this.maxAllowed)
+	return this.current
     }
 }
 

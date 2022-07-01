@@ -33,5 +33,11 @@ describe("Quiz", function(){
 	    expect(next.minAllowed).to.equal(7)
 	    expect(next.maxAllowed).to.equal(22)
 	})
+
+	it("sets the current prop to generated operation", function(){
+	    const quiz = new Quiz(5, 7, 22)
+	    const next = quiz.next() 
+	    expect(quiz.current).to.equal(next)
+	})
     })
 })
