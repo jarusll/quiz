@@ -22,5 +22,6 @@ describe("Quiz", function(){
 	it("decrement question count", function(){
 	    expect(quiz.total).to.be.equal(9)
 	})
-    })
-})
+	it("returns false when total = 0", function(){
+	    const quiz = new Quiz(0)
+	    expect(quiz.next()).to.be.fals
