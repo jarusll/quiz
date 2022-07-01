@@ -1,4 +1,5 @@
 const Math = require("./Math.js")
+const RandomOperation = require("./RandomOperation.js")
 
 class Quiz {
     constructor(count){
@@ -8,8 +9,7 @@ class Quiz {
     }
 
     next(){
-	const left = Math.randomRange(this.min, this.max)
-	const right = Math.randomRange(this.min, this.max)
+	return new RandomOperation(this.min, this.max)
     }
 }
 
