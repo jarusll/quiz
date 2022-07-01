@@ -12,11 +12,15 @@ describe("Quiz", function(){
     })
 
     describe("#next", function(){
-	it("generates random operation", function(){
-	    const quiz = new Quiz(10)
+	const quiz = new Quiz(10)
+	it("generates and returns random operation", function(){
 	    const op = quiz.next()
 	    console.table(op)
 	    expect(op).to.be.instanceOf(RandomOperation)
+	})
+
+	it("decrement question count", function(){
+	    expect(quiz.total).to.be.equal(9)
 	})
     })
 })
