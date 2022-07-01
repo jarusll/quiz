@@ -1,6 +1,7 @@
 
 const Quiz = require('../src/classes/Quiz.js')
 const RandomOperation = require('../src/classes/RandomOperation.js')
+const Operation = require('../src/classes/Operation.js')
 const expect = require("chai").expect
 
 describe("Quiz", function(){
@@ -13,10 +14,17 @@ describe("Quiz", function(){
 
     describe("#next", function(){
 	const quiz = new Quiz(10)
-	it("generates and returns random operation", function(){
+	it("returns random operation with 0 arguments", function(){
 	    const op = quiz.next()
 	    console.table(op)
-	    expect(op).to.be.instanceOf(RandomOperation)
+	    expect(op.constructor.name).to.equal("RandomOperation")
+	})
+
+	it("returns operation with 3 arguments", function(){
+	    const quiz = new Quiz(10, 2, 22)
+	    const op = quiz.next(7, 8, "*")
+	    console.table(op)
+	    expect(op.constructor.name).to.equal("Operation")
 	})
 
 	it("decrement question count", function(){

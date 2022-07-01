@@ -1,5 +1,6 @@
 const Math = require("./Math.js")
 const RandomOperation = require("./RandomOperation.js")
+const Operation = require("./Operation.js")
 
 class Quiz {
     constructor(count, minAllowed, maxAllowed){
@@ -13,7 +14,10 @@ class Quiz {
 	if (this.total <= 0)
 	    return false
 	this.total--
-	this.current = new RandomOperation(this.minAllowed, this.maxAllowed)
+	if (arguments.length === 3)
+	    this.current = new Operation(...arguments)
+	if (arguments.length === 0)
+	    this.current = new RandomOperation(this.minAllowed, this.maxAllowed)
 	return this.current
     }
 }
