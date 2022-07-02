@@ -62,6 +62,7 @@ class Quiz {
 	}
 
 	reset(){
+		this.correct = 0
 		this.status = "initial"
 		this.submissions = []
 	}

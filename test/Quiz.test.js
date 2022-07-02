@@ -123,6 +123,7 @@ describe("Quiz", function(){
 			quiz.next()
 			quiz.reset()
 			expect(quiz.status).to.be.equal("initial")
+			expect(quiz.score()).to.be.equal(0)
 			expect(quiz.submissions).to.be.deep.equal([])
 		})
 	})
