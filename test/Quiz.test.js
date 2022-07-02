@@ -112,4 +112,18 @@ describe("Quiz", function(){
 			expect(quiz.status).to.be.equal("ended")
 		})
 	})
+
+	describe("#reset", function(){
+		it("resets submissions to [] and quiz status to initial", function(){
+			const quiz = new Quiz(10, 1, 10)
+			quiz.start()
+			quiz.check(4)
+			quiz.next()
+			quiz.check(4)
+			quiz.next()
+			quiz.reset()
+			expect(quiz.status).to.be.equal("initial")
+			expect(quiz.submissions).to.be.deep.equal([])
+		})
+	})
 })

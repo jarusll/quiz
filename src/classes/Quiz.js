@@ -55,16 +55,15 @@ class Quiz {
     }
 
 	report(){
-		// const wrong = this.submissions
-		// 	.filter(([expr, answered]) => Number(expr.value()).toFixed(1) !== Number(answered).toFixed(1))
-		// 	.map(([expr, answered]) => ({
-		// 		operation: expr,
-		// 		answered
-		// 	}))
 		return {
 			score: this.score(),
 			submissions: this.submissions
 		}
+	}
+
+	reset(){
+		this.status = "initial"
+		this.submissions = []
 	}
 }
 

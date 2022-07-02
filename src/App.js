@@ -19,6 +19,12 @@ function App() {
 		setQuiz(clone)
 	}
 
+	const reset = () => {
+		quiz.reset()
+		let clone = Object.assign(Object.create(Object.getPrototypeOf(quiz)), quiz)
+		setQuiz(clone)
+	}
+
 	const QuizApp = () => {
 		if (quiz.status == "initial")
 			return (<div className="pt4 flex flex-column justify-center items-center">
@@ -27,11 +33,11 @@ function App() {
 			</div>)
 		if (quiz.status == "running")
 			return (<QuizUI left={quiz.current.left} right={quiz.current.right}
-				operator={quiz.current.operator} submit={submit} />)
-		return <Report {...quiz.report()} />
+				operator={quiz.current.operator} submit={submit} reset={reset}/>)
+		return <Report {...quiz.report()} reset={reset}/>
 	}
 	return (
-		<div className="vh-100 app">
+		<div className="vh-100 app mw-100">
 			<QuizApp />
 		</div>
 	);

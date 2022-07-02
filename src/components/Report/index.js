@@ -5,7 +5,7 @@ const Operation = ({ operation }) => {
     </>)
 }
 
-function Report({ score, submissions }) {
+function Report({ score, submissions, reset }) {
     return (<div className="flex flex-column items-center justify-center">
         <h2 className="f2">Score: {score}</h2>
         <table className="ba f4 fw5 avenir br1">
@@ -30,6 +30,7 @@ function Report({ score, submissions }) {
                     </td>
                 </tr>)})}
         </table>
+        <button onClick={reset} className="f2 mt3">Reset</button>
     </div>)
 }
 
