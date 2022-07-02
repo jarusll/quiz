@@ -3,7 +3,7 @@ import RandomOperation from "./RandomOperation.js"
 import Operation from "./Operation.js"
 
 class Quiz {
-	#score = 0
+	correct = 0
     constructor(count, minAllowed, maxAllowed){
 	this.status = "initial"
 	this.total = count
@@ -29,7 +29,7 @@ class Quiz {
 	this.submissions.push([this.current, value])
 	const result = opValue === givenValue
 	if (result)
-		this.#score++
+		this.correct++
 	return result
     }
 
@@ -41,11 +41,12 @@ class Quiz {
     }
 
     score(){
-		return this.#score
+		return this.correct
     }
 
 	report(){
-		const wrong = this.submissions.filter(([expr, answered]) => Number(expr.value()).toFixed(1) !== Number(answered).toFixed(1))
+		const wrong = this.submissions
+			.filter(([expr, answered]) => Number(expr.value()).toFixed(1) !== Number(answered).toFixed(1))
 			.map(([expr, answered]) => ({
 				operation: expr,
 				answered
