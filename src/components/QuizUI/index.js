@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import { useTimer } from 'use-timer';
 
-function QuizUI({ left, right, operator, submit, reset }) {
+function QuizUI({ left, right, operator, submit, reset, setLeft, setRight, setOperator}) {
 	const inputRef = useRef(null)
 	const { time, start } = useTimer({
 		initialTime: 30,
@@ -23,9 +23,15 @@ function QuizUI({ left, right, operator, submit, reset }) {
 				{/* timer */}
 				<pre>{time}s</pre>
 				{/* operation */}
-				<div>{left} {operator} {right}</div>
+				<div className="flex flex-row">
+					<input type="number" defaultValue={left} onChange={e => setLeft(e.target.value)} className="w4"/>
+					<select onChange={x => setOperator(x.target.value)} className="w3" defaultValue={operator}>
+						{["+", "-", "*", "/"].map(x => <option value={x}>{x}</option>)}
+					</select>
+					<input type="number" defaultValue={right} onChange={e => setRight(e.target.value)} className="w4"/>
+				</div>
 				{/* answer input */}
-				<input type="text" ref={inputRef} className="w-50"/>
+				<input type="text" ref={inputRef} className="w5"/>
 				<button className="f4 ma2 bn pa2 br1" onClick={() => {
 					submit(inputRef.current.value)
 					inputRef.current.value = ""

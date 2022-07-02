@@ -27,6 +27,21 @@ function QuizApp({ score }) {
         score(0)
 	}
 
+	const setLeft = (x) => {
+		console.log(typeof x, x)
+		quiz.current.left = Number(x)
+	}
+
+	const setRight = (x) => {
+		console.log(typeof x, x)
+		quiz.current.right = Number(x)
+	}
+
+	const setOperator = (x) => {
+		console.log(typeof x, x)
+		quiz.current.operator = String(x)
+	}
+
 	const QuizRouter = () => {
 		if (quiz.status == "initial")
 			return (<div className="pt4 flex flex-column justify-center items-center">
@@ -35,7 +50,8 @@ function QuizApp({ score }) {
 			</div>)
 		if (quiz.status == "running")
 			return (<QuizUI left={quiz.current.left} right={quiz.current.right}
-				operator={quiz.current.operator} submit={submit} reset={reset}/>)
+				operator={quiz.current.operator} submit={submit} reset={reset} 
+				setLeft={setLeft} setRight={setRight} setOperator={setOperator}/>)
         const report = quiz.report()
         console.log("report", report)
 		return <Report score={report.score} submissions={report.submissions} reset={reset}/>
