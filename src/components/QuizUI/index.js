@@ -1,19 +1,17 @@
-import { useState, useEffect, useRef } from "react"
+import { useRef } from "react"
 
-function QuizUI({left, right, operator, next, check}){
-    const inputRef = useRef(null)
-    useEffect(() => console.log(left, right, operator), [left, right, operator])
-    return (<>
-	    <div>
-	    <div>{left} {operator} {right}</div>
-	    <input type="text" ref={inputRef} />
-	    <button onClick={() => {
-		check(inputRef.current.value)
-		next()
-	    }}>Submit</button>
-	    </div>
-	    </>
-	   )
+function QuizUI({ left, right, operator, submit }) {
+	const inputRef = useRef(null)
+	return (
+		<div>
+			<div>{left} {operator} {right}</div>
+			<input type="text" ref={inputRef} />
+			<button onClick={() => {
+				submit(inputRef.current.value)
+				inputRef.current.value = ""
+			}}>Submit</button>
+		</div>
+	)
 }
 
 export default QuizUI
