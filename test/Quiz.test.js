@@ -63,4 +63,18 @@ describe("Quiz", function(){
 	    expect(quiz.submissions).to.deep.equal([[next1, 20], [next2, 2]])
 	})
     })
+
+    describe("#score", function(){
+	it("keeps count of correct answers", function(){
+	    const quiz = new Quiz(10, 2, 7)
+		quiz.next(2, 3, "*") 
+		quiz.check(6) // correct
+		quiz.next(2, 1, "+")
+		quiz.check(5) // wrong
+		quiz.next(4, 3, "-")
+		quiz.check(1) // correct
+	    expect(quiz.score()).to.be.equal(2)
+	})
+    })
+
 })

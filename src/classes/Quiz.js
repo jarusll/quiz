@@ -3,6 +3,7 @@ import RandomOperation from "./RandomOperation.js"
 import Operation from "./Operation.js"
 
 class Quiz {
+	#score = 0
     constructor(count, minAllowed, maxAllowed){
 	this.status = "initial"
 	this.total = count
@@ -26,7 +27,10 @@ class Quiz {
 	const opValue = Number(this.current.value()).toFixed(1)
 	const givenValue = Number(value).toFixed(1)
 	this.submissions.push([this.current, value])
-	return opValue === givenValue
+	const result = opValue === givenValue
+	if (result)
+		this.#score++
+	return result
     }
 
     start(){
@@ -34,6 +38,10 @@ class Quiz {
 	    this.next()
 	    this.status = "running"
 	}
+    }
+
+    score(){
+		return this.#score
     }
 }
 
