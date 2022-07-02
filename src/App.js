@@ -14,7 +14,7 @@ function App() {
 	}
 	return (
 		<div>
-			<QuizUI {...quiz.current} submit={submit} />
+			{(quiz.submissions.length < quiz.total) ? <QuizUI {...quiz.current} submit={submit} /> : <pre>{JSON.stringify(quiz.report(), null, 4)}</pre>}
 		</div>
 	);
 }
