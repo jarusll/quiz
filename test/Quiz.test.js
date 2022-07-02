@@ -88,7 +88,7 @@ describe("Quiz", function(){
 		quiz.check(2) // wrong
 		const report = quiz.report()
 	    expect(report.score).to.be.equal(1)
-	    expect(report.wrong).to.be.deep.equal([{operation: next2, answered: 5}, {operation: next3, answered: 2}])
+	    expect(report.submissions).to.be.deep.equal([[next1, 6], [next2, 5], [next3, 2]])
 	})
     })
 })
