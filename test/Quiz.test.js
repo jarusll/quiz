@@ -27,10 +27,7 @@ describe("Quiz", function(){
 	    expect(op.constructor.name).to.equal("Operation")
 	})
 
-	it("decrement question count", function(){
-	    expect(quiz.total).to.be.equal(9)
-	})
-	it("returns false when total = 0", function(){
+	it("returns false when submissions.length >= this.total", function(){
 	    const quiz = new Quiz(0)
 	    expect(quiz.next()).to.be.false
 	})

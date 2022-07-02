@@ -13,9 +13,8 @@ class Quiz {
     }
 
     next(){
-	if (this.total <= 0)
+	if (this.submissions.length >= this.total)
 	    return false
-	this.total--
 	if (arguments.length === 3)
 	    this.current = new Operation(...arguments)
 	if (arguments.length === 0)
