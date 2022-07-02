@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import { useTimer } from 'use-timer';
 
-function QuizUI({ left, right, operator, submit, reset, setLeft, setRight, setOperator}) {
+function QuizUI({ left, right, operator, submit, reset, setLeft, setRight, setOperator, setMaxAllowed, maxAllowed}) {
 	const inputRef = useRef(null)
 	const { time, start } = useTimer({
 		initialTime: 30,
@@ -18,6 +18,7 @@ function QuizUI({ left, right, operator, submit, reset, setLeft, setRight, setOp
 		<div className="pa2 mw-100">
 			<div className="flex flex-row center">
 				<button onClick={() => reset()} className="f4">Reset</button>
+				<input type="number" defaultValue={maxAllowed} onChange={e => setMaxAllowed(e.target.value)} />
 			</div>
 			<form className="flex flex-column f2 items-center">
 				{/* timer */}

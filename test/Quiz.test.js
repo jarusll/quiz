@@ -127,4 +127,12 @@ describe("Quiz", function(){
 			expect(quiz.submissions).to.be.deep.equal([])
 		})
 	})
+
+	describe("#set maxAllowed", function(){
+		it("sets maxAllowed", function(){
+			const quiz = new Quiz(10, 1, 10)
+			quiz.maxAllowed = 20
+			expect(quiz.maxAllowed).to.be.equal(20)
+		})
+	})
 })

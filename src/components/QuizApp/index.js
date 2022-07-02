@@ -28,18 +28,19 @@ function QuizApp({ score }) {
 	}
 
 	const setLeft = (x) => {
-		console.log(typeof x, x)
 		quiz.current.left = Number(x)
 	}
 
 	const setRight = (x) => {
-		console.log(typeof x, x)
 		quiz.current.right = Number(x)
 	}
 
 	const setOperator = (x) => {
-		console.log(typeof x, x)
 		quiz.current.operator = String(x)
+	}
+
+	const setMaxAllowed = (x) => {
+		quiz.maxAllowed = Number(x)
 	}
 
 	const QuizRouter = () => {
@@ -51,7 +52,8 @@ function QuizApp({ score }) {
 		if (quiz.status == "running")
 			return (<QuizUI left={quiz.current.left} right={quiz.current.right}
 				operator={quiz.current.operator} submit={submit} reset={reset} 
-				setLeft={setLeft} setRight={setRight} setOperator={setOperator}/>)
+				setLeft={setLeft} setRight={setRight} setOperator={setOperator} 
+				setMaxAllowed={setMaxAllowed} maxAllowed={quiz.maxAllowed}/>)
         const report = quiz.report()
         console.log("report", report)
 		return <Report score={report.score} submissions={report.submissions} reset={reset}/>
