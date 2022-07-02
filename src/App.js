@@ -1,9 +1,10 @@
 import { useState } from "react"
 import QuizUI from "./components/QuizUI/index.js"
+import Report from "./components/Report/index.js"
 import Quiz from "./classes/Quiz.js"
 
 function App() {
-	const [quiz, setQuiz] = useState(new Quiz(10, 1, 10))
+	const [quiz, setQuiz] = useState(new Quiz(2, 1, 10))
 	quiz.start()
 
 	const submit = x => {
@@ -14,7 +15,7 @@ function App() {
 	}
 	return (
 		<div>
-			{(quiz.submissions.length < quiz.total) ? <QuizUI {...quiz.current} submit={submit} /> : <pre>{JSON.stringify(quiz.report(), null, 4)}</pre>}
+			{(quiz.submissions.length < quiz.total) ? <QuizUI {...quiz.current} submit={submit} /> : <Report {...quiz.report()} />}
 		</div>
 	);
 }
