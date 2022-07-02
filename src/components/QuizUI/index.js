@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { useTimer } from 'use-timer';
 
 function QuizUI({ left, right, operator, submit, reset }) {
 	const inputRef = useRef(null)
 	const { time, start } = useTimer({
-		initialTime: 10,
+		initialTime: 30,
 		endTime: 0,
 		timerType: 'DECREMENTAL',
 		onTimeOver: () => submit("")
