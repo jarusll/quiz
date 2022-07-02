@@ -77,4 +77,18 @@ describe("Quiz", function(){
 	})
     })
 
+    describe("#report", function(){
+	it("keeps count of correct answers", function(){
+	    const quiz = new Quiz(10, 2, 7)
+		const next1 = quiz.next(2, 3, "*") 
+		quiz.check(6) // correct
+		const next2 = quiz.next(2, 1, "+")
+		quiz.check(5) // wrong
+		const next3 = quiz.next(4, 3, "-")
+		quiz.check(2) // wrong
+		const report = quiz.report()
+	    expect(report.score).to.be.equal(1)
+	    expect(report.wrong).to.be.deep.equal([{operation: next2, answered: 5}, {operation: next3, answered: 2}])
+	})
+    })
 })

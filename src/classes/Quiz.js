@@ -43,6 +43,18 @@ class Quiz {
     score(){
 		return this.#score
     }
+
+	report(){
+		const wrong = this.submissions.filter(([expr, answered]) => Number(expr.value()).toFixed(1) !== Number(answered).toFixed(1))
+			.map(([expr, answered]) => ({
+				operation: expr,
+				answered
+			}))
+		return {
+			score: this.score(),
+			wrong
+		}
+	}
 }
 
 export default Quiz
