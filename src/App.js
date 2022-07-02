@@ -21,7 +21,10 @@ function App() {
 
 	const QuizApp = () => {
 		if (quiz.status == "initial")
-			return (<button className="hello" onClick={() => start()}>Start</button>)
+			return (<div className="pt4 flex flex-column justify-center items-center">
+				<h2 className="f1">QUIZ</h2>
+				<button className="f2 pointer" onClick={() => start()}>Start</button>
+			</div>)
 		if (quiz.status == "running")
 			return (<QuizUI left={quiz.current.left} right={quiz.current.right}
 				operator={quiz.current.operator} submit={submit} />)
