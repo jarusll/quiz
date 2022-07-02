@@ -12,8 +12,31 @@ class Operation {
 	this.operator = operator
     }
 
+	get left(){
+		return this._left
+	}
+
+	set left(newLeft){
+		this._left = newLeft
+	}
+
+	get operator(){
+		return this._operator
+	}
+
+	set operator(newOp){
+		this._operator = newOp
+	}
+
+	get right(){
+		return this._right
+	}
+
+	set right(newRight){
+		this._right = newRight
+	}
     value(){
-	return this.#operationMap[this.operator](this.left, this.right)
+	return this.#operationMap[this._operator](this._left, this._right)
     }
 }
 
