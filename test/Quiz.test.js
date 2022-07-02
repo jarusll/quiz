@@ -91,4 +91,25 @@ describe("Quiz", function(){
 	    expect(report.submissions).to.be.deep.equal([[next1, 6], [next2, 5], [next3, 2]])
 	})
     })
+
+	describe("#status", function(){
+		it("returns `initial` when quiz is not started", function(){
+			const quiz = new Quiz(10, 1, 10)
+			expect(quiz.status).to.be.equal("initial")
+		})
+		it("returns `running` when quiz is running", function(){
+			const quiz = new Quiz(10, 1, 10)
+			quiz.start()
+			expect(quiz.status).to.be.equal("running")
+		})
+		it("returns `ended` when quiz is finished", function(){
+			const quiz = new Quiz(2, 1, 10)
+			quiz.start()
+			quiz.check(4)
+			quiz.next()
+			quiz.check(4)
+			quiz.next()
+			expect(quiz.status).to.be.equal("ended")
+		})
+	})
 })

@@ -6,7 +6,6 @@ import "./App.css"
 
 function App() {
 	const [quiz, setQuiz] = useState(new Quiz(2, 1, 10))
-	quiz.start()
 
 	const submit = x => {
 		quiz.check(x)
@@ -14,11 +13,23 @@ function App() {
 		let clone = Object.assign(Object.create(Object.getPrototypeOf(quiz)), quiz)
 		setQuiz(clone)
 	}
+	const start = () => {
+		quiz.start()
+		let clone = Object.assign(Object.create(Object.getPrototypeOf(quiz)), quiz)
+		setQuiz(clone)
+	}
+
+	const QuizApp = () => {
+		if (quiz.status == "initial")
+			return (<button className="hello" onClick={() => start()}>Start</button>)
+		if (quiz.status == "running")
+			return (<QuizUI left={quiz.current.left} right={quiz.current.right}
+				operator={quiz.current.operator} submit={submit} />)
+		return <Report {...quiz.report()} />
+	}
 	return (
 		<div className="vh-100 app">
-			{(quiz.submissions.length < quiz.total) ? 
-			<QuizUI left={quiz.current.left} right={quiz.current.right} operator={quiz.current.operator} submit={submit} /> : 
-			<Report {...quiz.report()} />}
+			<QuizApp />
 		</div>
 	);
 }

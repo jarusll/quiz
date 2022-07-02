@@ -5,7 +5,7 @@ import Operation from "./Operation.js"
 class Quiz {
 	correct = 0
     constructor(count, minAllowed, maxAllowed){
-	this.status = "initial"
+	this._status = "initial"
 	this.total = count
 	this.minAllowed = minAllowed
 	this.maxAllowed = maxAllowed
@@ -13,9 +13,19 @@ class Quiz {
 	this.submissions = []
     }
 
+	get status(){
+		return this._status
+	}
+
+	set status(newStatus){
+		this._status = newStatus
+	}
+
     next(){
-	if (this.submissions.length >= this.total)
+	if (this.submissions.length >= this.total){
+		this.status = "ended"
 	    return false
+	}
 	if (arguments.length === 3)
 	    this.current = new Operation(...arguments)
 	if (arguments.length === 0)
