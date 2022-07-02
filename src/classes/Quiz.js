@@ -4,6 +4,7 @@ import Operation from "./Operation.js"
 
 class Quiz {
     constructor(count, minAllowed, maxAllowed){
+	this.status = "initial"
 	this.total = count
 	this.minAllowed = minAllowed
 	this.maxAllowed = maxAllowed
@@ -27,6 +28,13 @@ class Quiz {
 	const givenValue = Number(value).toFixed(1)
 	this.submissions.push([this.current, value])
 	return opValue === givenValue
+    }
+
+    start(){
+	if (this.status === "initial"){
+	    this.next()
+	    this.status = "running"
+	}
     }
 }
 
